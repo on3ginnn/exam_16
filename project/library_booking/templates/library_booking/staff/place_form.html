@@ -1,0 +1,10 @@
+{% extends "library_booking/base.html" %}
+{% block title %}Новое место{% endblock %}
+{% block content %}
+<h1>Добавить компьютерное место</h1>
+<form method="post" class="stack-form">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Сохранить</button>
+</form>
+{% endblock %}

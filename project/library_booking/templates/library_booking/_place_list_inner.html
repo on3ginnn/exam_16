@@ -1,0 +1,41 @@
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Зона</th>
+      <th>Номер</th>
+      <th>ОС</th>
+      <th>Статус</th>
+      <th>Бронирование</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in places %}
+      <tr>
+        <td>{{ p.zone }}</td>
+        <td>{{ p.number }}</td>
+        <td>{{ p.operating_system }}</td>
+        <td>{{ p.status.label }}</td>
+        <td>
+          {% if p.is_available_for_booking %}
+            {% if user.is_authenticated %}
+              <form class="inline-booking" method="post" action="{% url 'library_booking:booking_create' %}">
+                {% csrf_token %}
+                <input type="hidden" name="place" value="{{ p.id }}">
+                <input type="date" name="date" required value="{% now "Y-m-d" %}">
+                <input type="time" name="start_time" required>
+                <input type="number" name="duration" value="60" min="15" step="15" title="Минуты">
+                <button type="submit">Заявка</button>
+              </form>
+            {% else %}
+              <a href="{% url 'library_booking:login' %}?next={{ request.path }}">Войдите, чтобы забронировать</a>
+            {% endif %}
+          {% else %}
+            <span class="muted">Недоступно</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="5">Нет мест по выбранным фильтрам.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>

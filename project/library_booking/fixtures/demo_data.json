@@ -1,0 +1,111 @@
+[
+{
+  "model": "library_booking.status",
+  "pk": 1,
+  "fields": {
+    "code": "available",
+    "label": "Доступно",
+    "kind": "place"
+  }
+},
+{
+  "model": "library_booking.status",
+  "pk": 2,
+  "fields": {
+    "code": "unavailable",
+    "label": "Недоступно",
+    "kind": "place"
+  }
+},
+{
+  "model": "library_booking.status",
+  "pk": 3,
+  "fields": {
+    "code": "new",
+    "label": "Новая",
+    "kind": "booking"
+  }
+},
+{
+  "model": "library_booking.status",
+  "pk": 4,
+  "fields": {
+    "code": "approved",
+    "label": "Одобрена",
+    "kind": "booking"
+  }
+},
+{
+  "model": "library_booking.status",
+  "pk": 5,
+  "fields": {
+    "code": "rejected",
+    "label": "Отклонена",
+    "kind": "booking"
+  }
+},
+{
+  "model": "library_booking.computerplace",
+  "pk": 1,
+  "fields": {
+    "number": 1,
+    "zone": "Зона А",
+    "operating_system": "Windows 11",
+    "status": 1
+  }
+},
+{
+  "model": "library_booking.computerplace",
+  "pk": 2,
+  "fields": {
+    "number": 2,
+    "zone": "Зона А",
+    "operating_system": "Ubuntu",
+    "status": 1
+  }
+},
+{
+  "model": "library_booking.computerplace",
+  "pk": 3,
+  "fields": {
+    "number": 1,
+    "zone": "Зона Б",
+    "operating_system": "Windows 11",
+    "status": 2
+  }
+},
+{
+  "model": "library_booking.computerplace",
+  "pk": 4,
+  "fields": {
+    "number": 3,
+    "zone": "Зона А",
+    "operating_system": "Windows 11",
+    "status": 1
+  }
+},
+{
+  "model": "library_booking.booking",
+  "pk": 1,
+  "fields": {
+    "place": 1,
+    "user": 2,
+    "date": "2026-04-16",
+    "start_time": "10:30:00",
+    "duration": 60,
+    "status": 4
+  }
+},
+{
+  "model": "library_booking.booking",
+  "pk": 2,
+  "fields": {
+    "place": 1,
+    "user": 1,
+    "date": "2026-04-16",
+    "start_time": "20:06:00",
+    "duration": 60,
+    "status": 4
+  }
+}
+]

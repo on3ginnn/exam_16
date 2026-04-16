@@ -1,0 +1,16 @@
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.sqlite3-journal
+.env
+.cursor/
+.playwright-mcp/
+*.log
+.idea/
+.vscode/
+
+# не публиковать пароли в открытом репозитории
+credentials.txt

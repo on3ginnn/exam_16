@@ -1,0 +1,42 @@
+{% extends "library_booking/base.html" %}
+{% load static %}
+{% block title %}Места — медиатека{% endblock %}
+{% block extra_head %}
+  {# AJAX без полной перезагрузки страницы: фильтр списка мест (параметр partial=1 + fetch). См. static/library_booking/app.js #}
+{% endblock %}
+{% block content %}
+<h1>Компьютерные места</h1>
+{% if booking_form.errors %}
+  <div class="form-errors">
+    <p>Исправьте ошибки при создании заявки:</p>
+    {{ booking_form.non_field_errors }}
+    <ul>
+      {% for field in booking_form %}
+        {% for err in field.errors %}<li>{{ field.label }}: {{ err }}</li>{% endfor %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+<section class="filters" aria-label="Фильтры">
+  <label>Зона
+    <select id="filter-zone" name="zone">
+      <option value="">Все</option>
+      {% for z in zones %}
+        <option value="{{ z }}" {% if z == current_zone %}selected{% endif %}>{{ z }}</option>
+      {% endfor %}
+    </select>
+  </label>
+  <label>ОС
+    <select id="filter-os" name="os">
+      <option value="">Все</option>
+      {% for s in systems %}
+        <option value="{{ s }}" {% if s == current_os %}selected{% endif %}>{{ s }}</option>
+      {% endfor %}
+    </select>
+  </label>
+</section>
+<div id="place-list-inner">
+  {% include "library_booking/_place_list_inner.html" %}
+</div>
+<script src="{% static 'library_booking/app.js' %}"></script>
+{% endblock %}

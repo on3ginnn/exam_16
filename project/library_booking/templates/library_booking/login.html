@@ -1,0 +1,15 @@
+{% extends "library_booking/base.html" %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+<h1>Вход</h1>
+<p>Введите учётные данные пользователя или администратора медиатеки (<code>is_staff</code>).</p>
+<form method="post" class="stack-form">
+  {% csrf_token %}
+  {% if form.non_field_errors %}
+    <ul class="errorlist">{{ form.non_field_errors }}</ul>
+  {% endif %}
+  <label>{{ form.username.label }}{{ form.username }}</label>
+  <label>{{ form.password.label }}{{ form.password }}</label>
+  <button type="submit">Войти</button>
+</form>
+{% endblock %}
