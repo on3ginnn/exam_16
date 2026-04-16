@@ -11,6 +11,3 @@ __pycache__/
 *.log
 .idea/
 .vscode/
-
-# не публиковать пароли в открытом репозитории
-credentials.txt
